@@ -1,0 +1,10 @@
+{
+  "itemGroup.test": "Example Mod Tab",
+  "block.test.example_block": "Example Block",
+  "item.test.example_item": "Example Item",
+  "command.test.player.no_permission": "You don't have the permission to run this command!",
+  "command.test.player.not_player": "This command should be run by a Player!",
+  "command.test.player.success.created": "Successfully added %s#%s to the database!",
+  "command.test.player.invalid_action": "Unknown action !",
+  "command.test.nyi": "Command Not Yet Implemented !"
+}
