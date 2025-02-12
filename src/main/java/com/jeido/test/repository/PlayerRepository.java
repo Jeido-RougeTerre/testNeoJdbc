@@ -89,7 +89,6 @@ public class PlayerRepository {
         if (id == null) {
             return null;
         }
-
         if (!exists(id)) {
             return null;
         }
@@ -98,11 +97,11 @@ public class PlayerRepository {
         try (PreparedStatement stmt = connection.prepareStatement(sql)) {
             stmt.setString(1, player.getName());
             stmt.setString(2, id.toString());
-            try (ResultSet rs = stmt.executeQuery()) {
-                if (rs.next()) {
-                    return new Player(UUID.fromString(rs.getString("id")), rs.getString("name"));
-                }
+            int rows = stmt.executeUpdate();
+            if (rows == 0) {
+                return null;
             }
+            return new Player(UUID.fromString(id.toString()), player.getName());
         } catch (SQLException e) {
             Test.LOGGER.error("Error while updating player with id {}", id, e);
         }

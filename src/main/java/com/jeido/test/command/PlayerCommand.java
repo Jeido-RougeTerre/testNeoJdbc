@@ -89,6 +89,7 @@ public class PlayerCommand {
             return 0;
         }
 
+
         Player player = playerRepository.update(id, new Player(id, name));
 
         source.sendSuccess(() -> Component.translatable("command.test.player.updated", player.toString()), true);
