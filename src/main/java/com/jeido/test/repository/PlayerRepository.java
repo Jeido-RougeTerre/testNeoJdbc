@@ -14,7 +14,6 @@ public class PlayerRepository {
 
     private static PlayerRepository instance;
 
-    private final DataBaseService db;
     private final Connection connection;
 
     public static PlayerRepository getInstance() {
@@ -25,7 +24,7 @@ public class PlayerRepository {
     }
 
     private PlayerRepository() {
-        db = DataBaseService.getInstance();
+        DataBaseService db = DataBaseService.getInstance();
         connection = db.getConnection();
         try (PreparedStatement stmt = connection.prepareStatement("CREATE TABLE IF NOT EXISTS player(id VARCHAR(36) PRIMARY KEY, name VARCHAR(16))")) {
             stmt.execute();
